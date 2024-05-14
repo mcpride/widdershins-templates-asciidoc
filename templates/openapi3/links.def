@@ -1,0 +1,21 @@
+{{? data.response.links }}
+
+===== Links
+
+{{ for (var l in data.response.links) { }}
+{{ var link = data.response.links[l]; }}
+
+*_{{=l}}_* => {{?link.operationId}}link:{{=link.operationId}}["#opId{{=link.operationId}}"]{{??}}{{=link.operationRef}}{{?}}
+
+{{? link.parameters }}
+[cols=",",options="header"]
+|===
+|Parameter|Expression
+{{for (var p in link.parameters) { }}|{{=p}}|{{=link.parameters[p]}}{{ } }}
+|===
+{{?}}
+
+
+{{ } /* of links */ }}
+
+{{?}}

@@ -1,0 +1,45 @@
+{{= data.tags.section }}{{#def.schema_utils}}
+[#{{=data.operationUniqueSlug}}-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+{{~ data.parameters :p}}{{patchEntry(p);}}|{{=p.name}}|{{=p.in}}|{{=p.safeType}}|{{=p.required}}|{{=p.shortDesc || 'none'}}
+{{~}}
+|===
+
+{{? data.longDescs }}
+===== Detailed descriptions
+{{~ data.parameters :p}}{{? p.shortDesc !== p.description}}
+*_{{=p.name}}_*: {{=p.description}}{{?}}
+{{~}}
+{{?}}
+
+{{~ data.parameters :p}}
+
+{{? p.schema && p.schema.enum }}
+{{~ p.schema.enum :e}}
+{{ var entry = {}; entry.name = p.name; entry.value = e; data.enums.push(entry); }}
+{{~}}
+{{?}}
+
+{{? p.schema && p.schema.items && p.schema.items.enum }}
+{{~ p.schema.items.enum :e}}
+{{ var entry = {}; entry.name = p.name; entry.value = e; data.enums.push(entry); }}
+{{~}}
+{{?}}
+
+{{~}}
+
+{{? data.enums && data.enums.length }}
+===== Enumerated Values
+
+[cols=",",options="header"]
+|===
+|Parameter|Value|
+{{~ data.enums :e}}|{{=e.name}}|{{=data.utils.toPrimitive(e.value)}}
+{{~}}
+|===
+{{?}}
+{{= data.tags.endSection }}

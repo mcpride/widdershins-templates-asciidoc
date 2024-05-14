@@ -1,0 +1,2134 @@
+
+[#swagger-petstore]
+= Swagger Petstore v1.0.0
+
+This is a sample server Petstore server.  You can find out more about Swagger at http://swagger.io[http://swagger.io] or on http://swagger.io/irc/[irc.freenode.net, #swagger].  For this sample, you can use the api key `special-key` to test the authorization filters.
+
+Base URLs:
+
+* link:http://petstore.swagger.io/v2[http://petstore.swagger.io/v2]
+
+link:http://swagger.io/terms/[Terms of service]
+Email: mailto:apiteam@swagger.io[Support] 
+License: link:http://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0]
+
+# Authentication
+
+* oAuth2 authentication. 
+
+** Flow: implicit
+... Authorization URL = link:http://petstore.swagger.io/oauth/dialog[http://petstore.swagger.io/oauth/dialog]
+
+[cols=",",options="header"]
+|===
+|Scope|Scope Description
+|write:pets|modify pets in your account
+|read:pets|read your pets
+
+|===
+
+* API Key (api_key)
+** Parameter Name: *_api_key_*, in: header. 
+
+[#swagger-petstore-pet]
+== pet
+
+Everything about your Pets
+
+link:http://swagger.io[Find out more]
+
+[#addPet]
+=== POST /pet
+
+Summary::
+Add a new pet to the store  
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X POST http://petstore.swagger.io/v2/pet \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer {access-token}'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+const inputBody = '{
+  "id": 0,
+  "category": {
+    "id": 0,
+    "name": "string"
+  },
+  "name": "doggie",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "string"
+    }
+  ],
+  "status": "available"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Authorization':'Bearer {access-token}'
+};
+
+fetch('http://petstore.swagger.io/v2/pet',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+Body parameter::
+
+====
+```json
+{
+  "id": 0,
+  "category": {
+    "id": 0,
+    "name": "string"
+  },
+  "name": "doggie",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "string"
+    }
+  ],
+  "status": "available"
+}
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<Pet>
+  <id>0</id>
+  <category>
+    <id>0</id>
+    <name>string</name>
+  </category>
+  <name>doggie</name>
+  <photoUrls>string</photoUrls>
+  <tags>
+    <id>0</id>
+    <name>string</name>
+  </tags>
+  <status>available</status>
+</Pet>
+```
+
+====
+
+[#addpet-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|body|body|<<_swagger-petstore_schema_pet>>|true|Pet object that needs to be added to the store
+
+|===
+
+[#addpet-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|405|link:https://tools.ietf.org/html/rfc7231#section-6.5.5[Method Not Allowed]|Invalid input|None
+
+|===
+
+[IMPORTANT]
+====
+To perform this operation, you must be authenticated by means of one of the following methods: 
+
+* petstore_auth ( Scopes: write:pets read:pets )
+====
+
+[#updatePet]
+=== PUT /pet
+
+Summary::
+Update an existing pet  
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X PUT http://petstore.swagger.io/v2/pet \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer {access-token}'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+const inputBody = '{
+  "id": 0,
+  "category": {
+    "id": 0,
+    "name": "string"
+  },
+  "name": "doggie",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "string"
+    }
+  ],
+  "status": "available"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Authorization':'Bearer {access-token}'
+};
+
+fetch('http://petstore.swagger.io/v2/pet',
+{
+  method: 'PUT',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+Body parameter::
+
+====
+```json
+{
+  "id": 0,
+  "category": {
+    "id": 0,
+    "name": "string"
+  },
+  "name": "doggie",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "string"
+    }
+  ],
+  "status": "available"
+}
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<Pet>
+  <id>0</id>
+  <category>
+    <id>0</id>
+    <name>string</name>
+  </category>
+  <name>doggie</name>
+  <photoUrls>string</photoUrls>
+  <tags>
+    <id>0</id>
+    <name>string</name>
+  </tags>
+  <status>available</status>
+</Pet>
+```
+
+====
+
+[#updatepet-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|body|body|<<_swagger-petstore_schema_pet>>|true|Pet object that needs to be added to the store
+
+|===
+
+[#updatepet-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|400|link:https://tools.ietf.org/html/rfc7231#section-6.5.1[Bad Request]|Invalid ID supplied|None
+|404|link:https://tools.ietf.org/html/rfc7231#section-6.5.4[Not Found]|Pet not found|None
+|405|link:https://tools.ietf.org/html/rfc7231#section-6.5.5[Method Not Allowed]|Validation exception|None
+
+|===
+
+[IMPORTANT]
+====
+To perform this operation, you must be authenticated by means of one of the following methods: 
+
+* petstore_auth ( Scopes: write:pets read:pets )
+====
+
+[#findPetsByStatus]
+=== GET /pet/findByStatus
+
+Summary::
+Finds Pets by status  
+{empty}
+Description::
+Multiple status values can be provided with comma separated strings
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X GET http://petstore.swagger.io/v2/pet/findByStatus?status=available \
+  -H 'Accept: application/xml' \
+  -H 'Authorization: Bearer {access-token}'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+
+const headers = {
+  'Accept':'application/xml',
+  'Authorization':'Bearer {access-token}'
+};
+
+fetch('http://petstore.swagger.io/v2/pet/findByStatus?status=available',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+[#findpetsbystatus-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|status|query|array[string]|true|Status values that need to be considered for filter
+
+|===
+
+===== Enumerated Values
+
+[cols=",",options="header"]
+|===
+|Parameter|Value|
+|status|available
+|status|pending
+|status|sold
+
+|===
+
+[#findpetsbystatus-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|200|link:https://tools.ietf.org/html/rfc7231#section-6.3.1[OK]|successful operation|Inline
+|400|link:https://tools.ietf.org/html/rfc7231#section-6.5.1[Bad Request]|Invalid status value|None
+
+|===
+
+[#findpetsbystatus-responseschema]
+==== Response Schema
+
+Status Code *_200_*
+
+[cols=",,,,",options="header"]
+|===
+|Name|Type|Required|Restrictions|Description
+|*anonymous*|[<<_swagger-petstore_schema_pet>>]|false|none|none
+|» id|integer(int64)|false|none|none
+|» category|<<_swagger-petstore_schema_category>>|false|none|none
+|»» id|integer(int64)|false|none|none
+|»» name|string|false|none|none
+|» name|string|true|none|none
+|» photoUrls|[string]|true|none|none
+|» tags|[<<_swagger-petstore_schema_tag>>]|false|none|none
+|»» id|integer(int64)|false|none|none
+|»» name|string|false|none|none
+|» status|string|false|none|pet status in the store
+
+|===
+
+===== Enumerated Values
+
+[cols=",",options="header"]
+|===
+|Property|Value
+|status|available
+|status|pending
+|status|sold
+
+|===
+
+[IMPORTANT]
+====
+To perform this operation, you must be authenticated by means of one of the following methods: 
+
+* petstore_auth ( Scopes: write:pets read:pets )
+====
+
+[#findPetsByTags]
+=== GET /pet/findByTags
+
+Summary::
+Finds Pets by tags  
+{empty}
+Description::
+Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X GET http://petstore.swagger.io/v2/pet/findByTags?tags=string \
+  -H 'Accept: application/xml' \
+  -H 'Authorization: Bearer {access-token}'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+
+const headers = {
+  'Accept':'application/xml',
+  'Authorization':'Bearer {access-token}'
+};
+
+fetch('http://petstore.swagger.io/v2/pet/findByTags?tags=string',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+[#findpetsbytags-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|tags|query|array[string]|true|Tags to filter by
+
+|===
+
+[#findpetsbytags-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|200|link:https://tools.ietf.org/html/rfc7231#section-6.3.1[OK]|successful operation|Inline
+|400|link:https://tools.ietf.org/html/rfc7231#section-6.5.1[Bad Request]|Invalid tag value|None
+
+|===
+
+[#findpetsbytags-responseschema]
+==== Response Schema
+
+Status Code *_200_*
+
+[cols=",,,,",options="header"]
+|===
+|Name|Type|Required|Restrictions|Description
+|*anonymous*|[<<_swagger-petstore_schema_pet>>]|false|none|none
+|» id|integer(int64)|false|none|none
+|» category|<<_swagger-petstore_schema_category>>|false|none|none
+|»» id|integer(int64)|false|none|none
+|»» name|string|false|none|none
+|» name|string|true|none|none
+|» photoUrls|[string]|true|none|none
+|» tags|[<<_swagger-petstore_schema_tag>>]|false|none|none
+|»» id|integer(int64)|false|none|none
+|»» name|string|false|none|none
+|» status|string|false|none|pet status in the store
+
+|===
+
+===== Enumerated Values
+
+[cols=",",options="header"]
+|===
+|Property|Value
+|status|available
+|status|pending
+|status|sold
+
+|===
+
+[IMPORTANT]
+====
+To perform this operation, you must be authenticated by means of one of the following methods: 
+
+* petstore_auth ( Scopes: write:pets read:pets )
+====
+
+[#getPetById]
+=== GET /pet/{petId}
+
+Summary::
+Find pet by ID  
+{empty}
+Description::
+Returns a single pet
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X GET http://petstore.swagger.io/v2/pet/{petId} \
+  -H 'Accept: application/xml' \
+  -H 'api_key: API_KEY'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+
+const headers = {
+  'Accept':'application/xml',
+  'api_key':'API_KEY'
+};
+
+fetch('http://petstore.swagger.io/v2/pet/{petId}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+[#getpetbyid-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|petId|path|integer(int64)|true|ID of pet to return
+
+|===
+
+[#getpetbyid-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|200|link:https://tools.ietf.org/html/rfc7231#section-6.3.1[OK]|successful operation|<<_swagger-petstore_schema_pet>>
+|400|link:https://tools.ietf.org/html/rfc7231#section-6.5.1[Bad Request]|Invalid ID supplied|None
+|404|link:https://tools.ietf.org/html/rfc7231#section-6.5.4[Not Found]|Pet not found|None
+
+|===
+
+[IMPORTANT]
+====
+To perform this operation, you must be authenticated by means of one of the following methods: 
+
+* api_key
+====
+
+[#updatePetWithForm]
+=== POST /pet/{petId}
+
+Summary::
+Updates a pet in the store with form data  
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X POST http://petstore.swagger.io/v2/pet/{petId} \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Authorization: Bearer {access-token}'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+const inputBody = '{
+  "name": "string",
+  "status": "string"
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Authorization':'Bearer {access-token}'
+};
+
+fetch('http://petstore.swagger.io/v2/pet/{petId}',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+Body parameter::
+
+====
+```yaml
+name: string
+status: string
+
+```
+
+====
+
+[#updatepetwithform-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|petId|path|integer(int64)|true|ID of pet that needs to be updated
+|body|body|object|false|none
+|» name|body|string|false|Updated name of the pet
+|» status|body|string|false|Updated status of the pet
+
+|===
+
+[#updatepetwithform-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|405|link:https://tools.ietf.org/html/rfc7231#section-6.5.5[Method Not Allowed]|Invalid input|None
+
+|===
+
+[IMPORTANT]
+====
+To perform this operation, you must be authenticated by means of one of the following methods: 
+
+* petstore_auth ( Scopes: write:pets read:pets )
+====
+
+[#deletePet]
+=== DELETE /pet/{petId}
+
+Summary::
+Deletes a pet  
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X DELETE http://petstore.swagger.io/v2/pet/{petId} \
+  -H 'api_key: string' \
+  -H 'Authorization: Bearer {access-token}'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+
+const headers = {
+  'api_key':'string',
+  'Authorization':'Bearer {access-token}'
+};
+
+fetch('http://petstore.swagger.io/v2/pet/{petId}',
+{
+  method: 'DELETE',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+[#deletepet-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|api_key|header|string|false|none
+|petId|path|integer(int64)|true|Pet id to delete
+
+|===
+
+[#deletepet-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|400|link:https://tools.ietf.org/html/rfc7231#section-6.5.1[Bad Request]|Invalid ID supplied|None
+|404|link:https://tools.ietf.org/html/rfc7231#section-6.5.4[Not Found]|Pet not found|None
+
+|===
+
+[IMPORTANT]
+====
+To perform this operation, you must be authenticated by means of one of the following methods: 
+
+* petstore_auth ( Scopes: write:pets read:pets )
+====
+
+[#uploadFile]
+=== POST /pet/{petId}/uploadImage
+
+Summary::
+uploads an image  
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X POST http://petstore.swagger.io/v2/pet/{petId}/uploadImage \
+  -H 'Content-Type: application/octet-stream' \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access-token}'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+const inputBody = 'string';
+const headers = {
+  'Content-Type':'application/octet-stream',
+  'Accept':'application/json',
+  'Authorization':'Bearer {access-token}'
+};
+
+fetch('http://petstore.swagger.io/v2/pet/{petId}/uploadImage',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+Body parameter::
+
+====
+```yaml
+string
+
+```
+
+====
+
+[#uploadfile-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|petId|path|integer(int64)|true|ID of pet to update
+|body|body|string(binary)|false|none
+
+|===
+
+[#uploadfile-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|200|link:https://tools.ietf.org/html/rfc7231#section-6.3.1[OK]|successful operation|<<_swagger-petstore_schema_apiresponse>>
+
+|===
+
+[IMPORTANT]
+====
+To perform this operation, you must be authenticated by means of one of the following methods: 
+
+* petstore_auth ( Scopes: write:pets read:pets )
+====
+
+[#swagger-petstore-store]
+== store
+
+Access to Petstore orders
+
+[#getInventory]
+=== GET /store/inventory
+
+Summary::
+Returns pet inventories by status  
+{empty}
+Description::
+Returns a map of status codes to quantities
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X GET http://petstore.swagger.io/v2/store/inventory \
+  -H 'Accept: application/json' \
+  -H 'api_key: API_KEY'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+
+const headers = {
+  'Accept':'application/json',
+  'api_key':'API_KEY'
+};
+
+fetch('http://petstore.swagger.io/v2/store/inventory',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+[#getinventory-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|200|link:https://tools.ietf.org/html/rfc7231#section-6.3.1[OK]|successful operation|Inline
+
+|===
+
+[#getinventory-responseschema]
+==== Response Schema
+
+Status Code *_200_*
+
+[cols=",,,,",options="header"]
+|===
+|Name|Type|Required|Restrictions|Description
+|» **additionalProperties**|integer(int32)|false|none|none
+
+|===
+
+[IMPORTANT]
+====
+To perform this operation, you must be authenticated by means of one of the following methods: 
+
+* api_key
+====
+
+[#placeOrder]
+=== POST /store/order
+
+Summary::
+Place an order for a pet  
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X POST http://petstore.swagger.io/v2/store/order \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/xml'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+const inputBody = '{
+  "id": 0,
+  "petId": 0,
+  "quantity": 0,
+  "shipDate": "2019-08-24T14:15:22Z",
+  "status": "placed",
+  "complete": false
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/xml'
+};
+
+fetch('http://petstore.swagger.io/v2/store/order',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+Body parameter::
+
+====
+```json
+{
+  "id": 0,
+  "petId": 0,
+  "quantity": 0,
+  "shipDate": "2019-08-24T14:15:22Z",
+  "status": "placed",
+  "complete": false
+}
+```
+
+====
+
+[#placeorder-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|body|body|<<_swagger-petstore_schema_order>>|true|order placed for purchasing the pet
+
+|===
+
+[#placeorder-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|200|link:https://tools.ietf.org/html/rfc7231#section-6.3.1[OK]|successful operation|<<_swagger-petstore_schema_order>>
+|400|link:https://tools.ietf.org/html/rfc7231#section-6.5.1[Bad Request]|Invalid Order|None
+
+|===
+
+NOTE: This operation does not require authentication
+
+[#getOrderById]
+=== GET /store/order/{orderId}
+
+Summary::
+Find purchase order by ID  
+{empty}
+Description::
+For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X GET http://petstore.swagger.io/v2/store/order/{orderId} \
+  -H 'Accept: application/xml'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+
+const headers = {
+  'Accept':'application/xml'
+};
+
+fetch('http://petstore.swagger.io/v2/store/order/{orderId}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+[#getorderbyid-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|orderId|path|integer(int64)|true|ID of pet that needs to be fetched
+
+|===
+
+[#getorderbyid-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|200|link:https://tools.ietf.org/html/rfc7231#section-6.3.1[OK]|successful operation|<<_swagger-petstore_schema_order>>
+|400|link:https://tools.ietf.org/html/rfc7231#section-6.5.1[Bad Request]|Invalid ID supplied|None
+|404|link:https://tools.ietf.org/html/rfc7231#section-6.5.4[Not Found]|Order not found|None
+
+|===
+
+NOTE: This operation does not require authentication
+
+[#deleteOrder]
+=== DELETE /store/order/{orderId}
+
+Summary::
+Delete purchase order by ID  
+{empty}
+Description::
+For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X DELETE http://petstore.swagger.io/v2/store/order/{orderId}
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+
+fetch('http://petstore.swagger.io/v2/store/order/{orderId}',
+{
+  method: 'DELETE'
+
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+[#deleteorder-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|orderId|path|integer(int64)|true|ID of the order that needs to be deleted
+
+|===
+
+[#deleteorder-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|400|link:https://tools.ietf.org/html/rfc7231#section-6.5.1[Bad Request]|Invalid ID supplied|None
+|404|link:https://tools.ietf.org/html/rfc7231#section-6.5.4[Not Found]|Order not found|None
+
+|===
+
+NOTE: This operation does not require authentication
+
+[#swagger-petstore-user]
+== user
+
+Operations about user
+
+link:http://swagger.io[Find out more about our store]
+
+[#createUser]
+=== POST /user
+
+Summary::
+Create user  
+{empty}
+Description::
+This can only be done by the logged in user.
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X POST http://petstore.swagger.io/v2/user \
+  -H 'Content-Type: application/json'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+const inputBody = '{
+  "id": 0,
+  "username": "string",
+  "firstName": "string",
+  "lastName": "string",
+  "email": "string",
+  "password": "string",
+  "phone": "string",
+  "userStatus": 0
+}';
+const headers = {
+  'Content-Type':'application/json'
+};
+
+fetch('http://petstore.swagger.io/v2/user',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+Body parameter::
+
+====
+```json
+{
+  "id": 0,
+  "username": "string",
+  "firstName": "string",
+  "lastName": "string",
+  "email": "string",
+  "password": "string",
+  "phone": "string",
+  "userStatus": 0
+}
+```
+
+====
+
+[#createuser-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|body|body|<<_swagger-petstore_schema_user>>|true|Created user object
+
+|===
+
+[#createuser-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|default|Default|successful operation|None
+
+|===
+
+NOTE: This operation does not require authentication
+
+[#createUsersWithArrayInput]
+=== POST /user/createWithArray
+
+Summary::
+Creates list of users with given input array  
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X POST http://petstore.swagger.io/v2/user/createWithArray \
+  -H 'Content-Type: application/json'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+const inputBody = '[
+  {
+    "id": 0,
+    "username": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "email": "string",
+    "password": "string",
+    "phone": "string",
+    "userStatus": 0
+  }
+]';
+const headers = {
+  'Content-Type':'application/json'
+};
+
+fetch('http://petstore.swagger.io/v2/user/createWithArray',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+Body parameter::
+
+====
+```json
+[
+  {
+    "id": 0,
+    "username": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "email": "string",
+    "password": "string",
+    "phone": "string",
+    "userStatus": 0
+  }
+]
+```
+
+====
+
+[#createuserswitharrayinput-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|body|body|[<<_swagger-petstore_schema_user>>]|true|List of user object
+
+|===
+
+[#createuserswitharrayinput-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|default|Default|successful operation|None
+
+|===
+
+NOTE: This operation does not require authentication
+
+[#createUsersWithListInput]
+=== POST /user/createWithList
+
+Summary::
+Creates list of users with given input array  
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X POST http://petstore.swagger.io/v2/user/createWithList \
+  -H 'Content-Type: application/json'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+const inputBody = '[
+  {
+    "id": 0,
+    "username": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "email": "string",
+    "password": "string",
+    "phone": "string",
+    "userStatus": 0
+  }
+]';
+const headers = {
+  'Content-Type':'application/json'
+};
+
+fetch('http://petstore.swagger.io/v2/user/createWithList',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+Body parameter::
+
+====
+```json
+[
+  {
+    "id": 0,
+    "username": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "email": "string",
+    "password": "string",
+    "phone": "string",
+    "userStatus": 0
+  }
+]
+```
+
+====
+
+[#createuserswithlistinput-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|body|body|[<<_swagger-petstore_schema_user>>]|true|List of user object
+
+|===
+
+[#createuserswithlistinput-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|default|Default|successful operation|None
+
+|===
+
+NOTE: This operation does not require authentication
+
+[#loginUser]
+=== GET /user/login
+
+Summary::
+Logs user into the system  
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X GET http://petstore.swagger.io/v2/user/login?username=string&password=pa%24%24word \
+  -H 'Accept: application/xml'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+
+const headers = {
+  'Accept':'application/xml'
+};
+
+fetch('http://petstore.swagger.io/v2/user/login?username=string&password=pa%24%24word',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+[#loginuser-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|username|query|string|true|The user name for login
+|password|query|string(password)|true|The password for login in clear text
+
+|===
+
+[#loginuser-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|200|link:https://tools.ietf.org/html/rfc7231#section-6.3.1[OK]|successful operation|string
+|400|link:https://tools.ietf.org/html/rfc7231#section-6.5.1[Bad Request]|Invalid username/password supplied|None
+
+|===
+
+==== Response Headers
+
+[cols=",,,,",options="header"]
+|===
+|Status|Header|Type|Format|Description
+|200|X-Rate-Limit|integer|int32|calls per hour allowed by the user
+|200|X-Expires-After|string|date-time|date in UTC when token expires
+
+|===
+
+NOTE: This operation does not require authentication
+
+[#logoutUser]
+=== GET /user/logout
+
+Summary::
+Logs out current logged in user session  
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X GET http://petstore.swagger.io/v2/user/logout
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+
+fetch('http://petstore.swagger.io/v2/user/logout',
+{
+  method: 'GET'
+
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+[#logoutuser-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|default|Default|successful operation|None
+
+|===
+
+NOTE: This operation does not require authentication
+
+[#getUserByName]
+=== GET /user/{username}
+
+Summary::
+Get user by user name  
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X GET http://petstore.swagger.io/v2/user/{username} \
+  -H 'Accept: application/xml'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+
+const headers = {
+  'Accept':'application/xml'
+};
+
+fetch('http://petstore.swagger.io/v2/user/{username}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+[#getuserbyname-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|username|path|string|true|The name that needs to be fetched. Use user1 for testing. 
+
+|===
+
+[#getuserbyname-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|200|link:https://tools.ietf.org/html/rfc7231#section-6.3.1[OK]|successful operation|<<_swagger-petstore_schema_user>>
+|400|link:https://tools.ietf.org/html/rfc7231#section-6.5.1[Bad Request]|Invalid username supplied|None
+|404|link:https://tools.ietf.org/html/rfc7231#section-6.5.4[Not Found]|User not found|None
+
+|===
+
+NOTE: This operation does not require authentication
+
+[#updateUser]
+=== PUT /user/{username}
+
+Summary::
+Updated user  
+{empty}
+Description::
+This can only be done by the logged in user.
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X PUT http://petstore.swagger.io/v2/user/{username} \
+  -H 'Content-Type: application/json'
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+const inputBody = '{
+  "id": 0,
+  "username": "string",
+  "firstName": "string",
+  "lastName": "string",
+  "email": "string",
+  "password": "string",
+  "phone": "string",
+  "userStatus": 0
+}';
+const headers = {
+  'Content-Type':'application/json'
+};
+
+fetch('http://petstore.swagger.io/v2/user/{username}',
+{
+  method: 'PUT',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+Body parameter::
+
+====
+```json
+{
+  "id": 0,
+  "username": "string",
+  "firstName": "string",
+  "lastName": "string",
+  "email": "string",
+  "password": "string",
+  "phone": "string",
+  "userStatus": 0
+}
+```
+
+====
+
+[#updateuser-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|username|path|string|true|name that need to be updated
+|body|body|<<_swagger-petstore_schema_user>>|true|Updated user object
+
+|===
+
+[#updateuser-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|400|link:https://tools.ietf.org/html/rfc7231#section-6.5.1[Bad Request]|Invalid user supplied|None
+|404|link:https://tools.ietf.org/html/rfc7231#section-6.5.4[Not Found]|User not found|None
+
+|===
+
+NOTE: This operation does not require authentication
+
+[#deleteUser]
+=== DELETE /user/{username}
+
+Summary::
+Delete user  
+{empty}
+Description::
+This can only be done by the logged in user.
+{empty}
+
+Code samples::
+{empty}
+
+====
+SHELL:
+
+[source,shell]
+----
+curl -X DELETE http://petstore.swagger.io/v2/user/{username}
+
+----
+====
+
+====
+JAVASCRIPT:
+
+[source,javascript]
+----
+
+fetch('http://petstore.swagger.io/v2/user/{username}',
+{
+  method: 'DELETE'
+
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+----
+====
+
+{empty} +
+
+[#deleteuser-parameters]
+==== Parameters
+
+[cols=",,,,",options="header"]
+|===
+|Name|In|Type|Required|Description
+|username|path|string|true|The name that needs to be deleted
+
+|===
+
+[#deleteuser-responses]
+==== Responses
+
+[cols=",,,",options="header"]
+|===
+|Status|Meaning|Description|Schema
+|400|link:https://tools.ietf.org/html/rfc7231#section-6.5.1[Bad Request]|Invalid username supplied|None
+|404|link:https://tools.ietf.org/html/rfc7231#section-6.5.4[Not Found]|User not found|None
+
+|===
+
+NOTE: This operation does not require authentication
+
+== Schemas
+
+[#_swagger-petstore_schema_order]
+=== Order
+
+====
+JSON:
+
+[source,json]
+----
+{
+  "id": 0,
+  "petId": 0,
+  "quantity": 0,
+  "shipDate": "2019-08-24T14:15:22Z",
+  "status": "placed",
+  "complete": false
+}
+
+----
+====
+
+==== Properties
+
+[cols=",,,,",options="header"]
+|===
+|Name|Type|Required|Restrictions|Description
+|id|integer(int64)|false|none|none
+|petId|integer(int64)|false|none|none
+|quantity|integer(int32)|false|none|none
+|shipDate|string(date-time)|false|none|none
+|status|string|false|none|Order Status
+|complete|boolean|false|none|none
+
+|===
+
+===== Enumerated Values
+
+[cols=",",options="header"]
+|===
+|Property|Value
+|status|placed
+|status|approved
+|status|delivered
+
+|===
+
+[#_swagger-petstore_schema_category]
+=== Category
+
+====
+JSON:
+
+[source,json]
+----
+{
+  "id": 0,
+  "name": "string"
+}
+
+----
+====
+
+==== Properties
+
+[cols=",,,,",options="header"]
+|===
+|Name|Type|Required|Restrictions|Description
+|id|integer(int64)|false|none|none
+|name|string|false|none|none
+
+|===
+
+[#_swagger-petstore_schema_user]
+=== User
+
+====
+JSON:
+
+[source,json]
+----
+{
+  "id": 0,
+  "username": "string",
+  "firstName": "string",
+  "lastName": "string",
+  "email": "string",
+  "password": "string",
+  "phone": "string",
+  "userStatus": 0
+}
+
+----
+====
+
+==== Properties
+
+[cols=",,,,",options="header"]
+|===
+|Name|Type|Required|Restrictions|Description
+|id|integer(int64)|false|none|none
+|username|string|false|none|none
+|firstName|string|false|none|none
+|lastName|string|false|none|none
+|email|string|false|none|none
+|password|string|false|none|none
+|phone|string|false|none|none
+|userStatus|integer(int32)|false|none|User Status
+
+|===
+
+[#_swagger-petstore_schema_tag]
+=== Tag
+
+====
+JSON:
+
+[source,json]
+----
+{
+  "id": 0,
+  "name": "string"
+}
+
+----
+====
+
+==== Properties
+
+[cols=",,,,",options="header"]
+|===
+|Name|Type|Required|Restrictions|Description
+|id|integer(int64)|false|none|none
+|name|string|false|none|none
+
+|===
+
+[#_swagger-petstore_schema_pet]
+=== Pet
+
+====
+JSON:
+
+[source,json]
+----
+{
+  "id": 0,
+  "category": {
+    "id": 0,
+    "name": "string"
+  },
+  "name": "doggie",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "string"
+    }
+  ],
+  "status": "available"
+}
+
+----
+====
+
+==== Properties
+
+[cols=",,,,",options="header"]
+|===
+|Name|Type|Required|Restrictions|Description
+|id|integer(int64)|false|none|none
+|category|<<_swagger-petstore_schema_category>>|false|none|none
+|name|string|true|none|none
+|photoUrls|[string]|true|none|none
+|tags|[<<_swagger-petstore_schema_tag>>]|false|none|none
+|status|string|false|none|pet status in the store
+
+|===
+
+===== Enumerated Values
+
+[cols=",",options="header"]
+|===
+|Property|Value
+|status|available
+|status|pending
+|status|sold
+
+|===
+
+[#_swagger-petstore_schema_apiresponse]
+=== ApiResponse
+
+====
+JSON:
+
+[source,json]
+----
+{
+  "code": 0,
+  "type": "string",
+  "message": "string"
+}
+
+----
+====
+
+==== Properties
+
+[cols=",,,,",options="header"]
+|===
+|Name|Type|Required|Restrictions|Description
+|code|integer(int32)|false|none|none
+|type|string|false|none|none
+|message|string|false|none|none
+
+|===
+

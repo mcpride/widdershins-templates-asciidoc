@@ -1,0 +1,84 @@
+{{
+    function inferType(schema) {
+        function has(properties) {
+            for (let property of properties) {
+                if (typeof schema[property] !== 'undefined') return true;
+            }
+            return false;
+        }
+        if (schema.type) return schema.type;
+        let possibleTypes = [];
+        if (has(['properties','additionalProperties','patternProperties','minProperties','maxProperties','required','dependencies'])) {
+            possibleTypes.push('object');
+        }
+        if (has(['items','additionalItems','maxItems','minItems','uniqueItems'])) {
+            possibleTypes.push('array');
+        }
+        if (has(['exclusiveMaximum','exclusiveMinimum','maximum','minimum','multipleOf'])) {
+            possibleTypes.push('number');
+        }
+        if (has(['maxLength','minLength','pattern'])) {
+            possibleTypes.push('number');
+        }
+        if (schema.enum) {
+            for (let value of schema.enum) {
+                possibleTypes.push(typeof value);
+            }
+        }
+        if (possibleTypes.length === 1) return possibleTypes[0];
+        return 'any';
+    }
+
+    function patchEntry(entry){
+        if (!entry) return;
+        let schema = entry.schema;
+        let patched = false;
+        /*
+        if (entry.safeType && entry.safeType.includes("](#")) {
+            console.log("=============================");
+            console.log(entry);
+            console.log("=============================");
+        }
+        */
+        if (!schema && entry.content) {
+            schema = Object.values(entry.content)[0].schema;
+        }
+        if (schema) {
+            if (schema["x-widdershins-oldRef"]) {
+                entry.$ref = schema["x-widdershins-oldRef"].replace('#/components/schemas/', '');
+                entry.safeType = '<<_' + data.title_prefix + '_schema_' + entry.$ref.toLowerCase() + '>>';
+                patched = true;
+            }
+            if (schema.$ref && schema.$ref["x-widdershins-oldRef"]) {
+                entry.$ref = schema.$ref["x-widdershins-oldRef"].replace('#/components/schemas/', '');
+            }
+            if (schema.$ref) {
+                entry.safeType = '<<_' + data.title_prefix + '_schema_' + entry.$ref.toLowerCase() + '>>';
+                patched = true;
+            }
+            if (entry.format && patched) {
+                entry.safeType = entry.safeType+' ('+entry.format+')'
+            };
+            if (entry.schema.type && (entry.schema.type === 'array') && schema.items) {
+                let itemsType = inferType(schema.items);
+                /* let itemsType = schema.items.type||'any'; */
+                if (schema.items["x-widdershins-oldRef"]) {
+                    let $ref = schema.items["x-widdershins-oldRef"].replace('#/components/schemas/','');
+                    itemsType = '<<_' + data.title_prefix + '_schema_' + $ref.toLowerCase() + '>>';
+                    patched = true;
+                }
+                if (schema.items.$ref) {
+                    let $ref = schema.items.$ref.replace('#/components/schemas/','');
+                    itemsType = '<<_' + data.title_prefix + '_schema_' + $ref.toLowerCase() + '>>';
+                    patched = true;
+                }
+                if (patched) {
+                    entry.safeType = '['+itemsType+']';
+                }
+            }
+            if ((schema.nullable === true) && patched) {
+                entry.safeType += '¦null';
+            }
+        }
+    }
+}}
